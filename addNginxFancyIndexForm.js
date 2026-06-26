@@ -4,11 +4,11 @@
   const THEME_STORAGE_KEY = "fancyindex-theme";
   const ITEMS_PER_PAGE = 100;
 
-  const form = document.createElement("form");
-  const input = document.createElement("input");
+  const form = document.querySelector('.directory-controls form');
+  const input = document.getElementById('search');
   const heading = document.querySelector("h1");
-  const controls = document.createElement("div");
-  const themeToggle = document.createElement("button");
+  const controls = document.querySelector('.directory-controls');
+  const themeToggle = document.querySelector('.theme-toggle');
   const body = document.body;
   const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
   const table = document.querySelector("#list");
@@ -107,32 +107,6 @@
   }
 
   createBreadcrumbs();
-
-  controls.className = "directory-controls";
-
-  // Theme toggle with Auto/Light/Dark modes
-  themeToggle.type = "button";
-  themeToggle.className = "theme-toggle";
-  themeToggle.setAttribute("aria-label", "Change theme");
-
-  const themeOptions = ["auto", "light", "dark"];
-  let currentThemeIndex = 0;
-
-  function updateThemeButton() {
-    const theme = themeOptions[currentThemeIndex];
-    const labels = { auto: "Auto", light: "Light", dark: "Dark" };
-    themeToggle.textContent = labels[theme];
-    themeToggle.setAttribute("data-theme", theme);
-  }
-
-  themeToggle.addEventListener("click", () => {
-    currentThemeIndex = (currentThemeIndex + 1) % 3;
-    const theme = themeOptions[currentThemeIndex];
-    storeTheme(theme);
-    applyTheme(theme);
-    updateThemeButton();
-  });
-
   controls.appendChild(themeToggle);
 
   // Search input
@@ -143,12 +117,6 @@
   input.setAttribute("aria-label", "Search directory");
   form.appendChild(input);
   controls.appendChild(form);
-
-  if (heading?.parentNode) {
-    heading.after(controls);
-  } else {
-    document.body.insertBefore(controls, document.body.firstChild);
-  }
 
   const listItems = tbody ? Array.from(tbody.querySelectorAll("tr")) : [];
   let filteredItems = [...listItems];
