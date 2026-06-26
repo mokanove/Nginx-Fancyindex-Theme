@@ -107,5 +107,5 @@
   }
 
   renderMarkdown("raw_include_HEADER_md", "HEADER.md");
-  renderMarkdown("raw_include_README_md", "README.md");
+  renderMarkdown("raw_include_README_md", "FOOTER.md");
 })();

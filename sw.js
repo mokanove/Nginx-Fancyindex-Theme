@@ -3,9 +3,9 @@
 
 const CACHE_NAME = "nginx-fancyindex-v1";
 const STATIC_ASSETS = [
-  "/Nginx-Fancyindex/styles.css",
-  "/Nginx-Fancyindex/addNginxFancyIndexForm.js",
-  "/Nginx-Fancyindex/showdown.min.js",
+  "fancyindex-theme/styles.css",
+  "fancyindex-theme/addNginxFancyIndexForm.js",
+  "fancyindex-theme/showdown.min.js",
 ];
 
 // Install event - cache static assets
