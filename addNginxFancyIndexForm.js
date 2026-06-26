@@ -4,13 +4,6 @@
   const THEME_STORAGE_KEY = "fancyindex-theme";
   const ITEMS_PER_PAGE = 100;
 
-  // Register Service Worker for offline support
-  if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("fancyindex-theme/sw.js").catch((err) => {
-      console.warn("Service worker registration failed:", err);
-    });
-  }
-
   const form = document.createElement("form");
   const input = document.createElement("input");
   const heading = document.querySelector("h1");
