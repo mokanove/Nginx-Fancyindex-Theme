@@ -1,18 +1,3 @@
-/* styles.css
-Combined light and dark themes for the Nginx FancyIndex page.
-Optimized for modern browsers: Chrome, Firefox, Safari, Edge
- * © 2015-17, Lilian Besson (Naereen) and contributors,
- * open-sourced under the MIT License, https://lbesson.mit-license.org/
- * hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
-*/
-
-/*
-
-*/
-
-/* =========================
-   Base: box sizing + smooth scroll
-   ========================= */
 *,
 *::before,
 *::after {
@@ -20,21 +5,17 @@ Optimized for modern browsers: Chrome, Firefox, Safari, Edge
 }
 
 html {
+        text-align: center;
+        font-size: clamp(1.5rem, 2vw + 1rem, 2.4rem);
+        line-height: 1.4;
+        margin-bottom: 1.25rem;
+}
+
+.directory-controls {
         scroll-behavior: smooth; /* smooth anchor jumps */
 }
 
-/* =========================
-   Accessibility: honor reduced motion
-   Generally not applicable to a nginx static file server, but doesn't hurt to include
-   https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion
-   ========================= */
 @media (prefers-reduced-motion: reduce) {
-        *,<!--
-header.html
-© 2015-18, Lilian Besson (Naereen) and contributors,
-open-sourced under the MIT License, https://lbesson.mit-license.org/
-hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
--->
         *::before,
         *::after {
                 animation-duration: 0.01ms !important;     /* effectively disables animations */
@@ -44,13 +25,6 @@ hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
         }
 }
 
-/* =========================
-   Theme tokens (Light)
-   Centralized design variables used throughout
-   higher specificity than the html selector
-   https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity
-   https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:root
-   ========================= */
 :root {
         --bg: #f4f6fb;                    /* page background */
         --bg-elev: #ffffff;               /* elevated surfaces (cards, inputs) */
@@ -178,7 +152,12 @@ a.clear,
 a.clear:link,
 a.clear:visited {
         color: var(--clear-link);
-        padding: 2px 0;
+        padding: 2px 0;d a[href$=".gz"]::before,
+#list tbody tr td:first-child a[href$=".7z"]::before,
+#list tbody tr td:first-child a[href$=".bz2"]::before,
+#list tbody tr td:first-child a[href$=".xz"]::before {
+        content: '📦';
+}
         font-weight: 400;
         font-size: 1rem;
         margin-left: 1rem;
@@ -245,12 +224,7 @@ input:focus-visible {
 }
 
 #search {
-        color: var(--fg);<!--
-header.html
-© 2015-18, Lilian Besson (Naereen) and contributors,
-open-sourced under the MIT License, https://lbesson.mit-license.org/
-hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
--->
+        color: var(--fg);
         background-color: var(--bg-elev);
         display: block;
         margin-inline: auto;
@@ -344,7 +318,12 @@ td a {
         font-style: normal;
 }
 
-/* Directory/Folder */
+/* Directory/Folder */d a[href$=".gz"]::before,
+#list tbody tr td:first-child a[href$=".7z"]::before,
+#list tbody tr td:first-child a[href$=".bz2"]::before,
+#list tbody tr td:first-child a[href$=".xz"]::before {
+        content: '📦';
+}
 #list tbody tr td:first-child a[href$="/"]::before {
         content: '📁';
 }
@@ -416,7 +395,12 @@ td a {
 
 #list tbody tr td:first-child a[href$=".ppt"]::before,
 #list tbody tr td:first-child a[href$=".pptx"]::before {
-        content: '📙';
+        co
+        background-color: var(--bg-elev);
+        display: block;
+        margin-inline: auto;
+        width: min(100%, 320px);
+   ntent: '📙';
 }
 
 #list tbody tr td:first-child a[href$=".txt"]::before,
@@ -490,7 +474,12 @@ footer a {
    Breadcrumb navigation
    ========================= */
 .breadcrumb-nav {
-        margin: 1rem 0 1.5rem;
+        ma
+        background-color: var(--bg-elev);
+        display: block;
+        margin-inline: auto;
+        width: min(100%, 320px);
+   rgin: 1rem 0 1.5rem;
         padding: 0.75rem 1rem;
         background: var(--bg-elev);
         border-radius: 8px;
@@ -527,7 +516,16 @@ footer a {
 .breadcrumb a {
         color: var(--link);
         text-decoration: none;
-        transition: color 150ms ease-in;
+        transition: color 150ms ease;
+}
+
+#list tbody tr td:first-child a[href$=".doc"]::before,
+#list tbody tr td:first-child a[href$=".docx"]::before {
+        content: '📘';
+}
+
+#list tbody tr td:first-child a[href$=".xls"]::before,
+#list tbody tr td:first-child a[href$=".xlsx"]:ase-in;
 }
 
 .breadcrumb a:hover {
@@ -748,6 +746,13 @@ hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
                 font-size: 0.8rem;
                 padding: 0.4rem 0.75rem;
                 margin-left: 0;
+#list tbody tr td:first-child a[href$=".doc"]::before,
+#list tbody tr td:first-child a[href$=".docx"]::before {
+        content: '📘';
+}
+
+#list tbody tr td:first-child a[href$=".xls"]::before,
+#list tbody tr td:first-child a[href$=".xlsx"]:
                 margin-top: 0.5rem;
         }
 }
