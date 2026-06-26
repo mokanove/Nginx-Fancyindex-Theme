@@ -250,9 +250,7 @@
                 const btn = document.createElement('button');
                 btn.textContent = pageNum;
                 btn.className = 'pagination-btn';
-                if (pageNum === currentPagtBtn);
-
-                paginationDiv.appendChild(e) {
+                if (pageNum === currentPage) {
                         btn.classList.add('active');
                         btn.setAttribute('aria-current', 'page');
                 }

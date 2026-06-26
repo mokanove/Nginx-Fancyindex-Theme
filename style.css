@@ -1,336 +1,331 @@
+/* =========================
+   Box-sizing reset
+   ========================= */
 *,
 *::before,
 *::after {
-        box-sizing: border-box; /* predictable sizing model */
+  box-sizing: border-box;
 }
 
-html {
-        text-align: center;
-        font-size: clamp(1.5rem, 2vw + 1rem, 2.4rem);
-        line-height: 1.4;
-        margin-bottom: 1.25rem;
-}
-
-.directory-controls {
-        scroll-behavior: smooth; /* smooth anchor jumps */
-}
-
+/* =========================
+   Reduced-motion preference
+   ========================= */
 @media (prefers-reduced-motion: reduce) {
-        *::before,
-        *::after {
-                animation-duration: 0.01ms !important;     /* effectively disables animations */
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;     /* disables transitions */
-                scroll-behavior: auto !important;           /* avoids smooth scrolling */
-        }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
+/* =========================
+   Theme tokens (Light — default)
+   ========================= */
 :root {
-        --bg: #f4f6fb;                    /* page background */
-        --bg-elev: #ffffff;               /* elevated surfaces (cards, inputs) */
-        --fg: #1e2430;                    /* primary text */
-        --muted: #5e6877;                 /* secondary text */
-        --row-hover: #eef1f8;             /* table row hover */
-        --rule: #d7dde6;                  /* borders / rules */
-        --accent: #2d6cdf;                /* accent + links */
-        --focus: 0 0 0 3px rgba(45, 108, 223, 0.25); /* focus ring shadow */
-        --link: var(--accent);              /* primary link color */
-        --clear-link: var(--muted);         /* subtle action links */
-        --input-border: var(--rule);        /* input border */
-        --focus-border: var(--accent);      /* input focus border */
-        --table-shadow: 0 18px 38px rgba(15, 30, 55, 0.08); /* table elevation */
-        --td-border: rgba(0, 0, 0, 0.05); /* table row separators */
-        --parent-hover: #1b1f2a;          /* parent dir hover */
-        --footer-link: var(--accent);       /* footer link color */
-        --toggle-bg: #e8ecf6;             /* theme toggle background */
-        --toggle-fg: #1e2430;             /* theme toggle text */
-        --toggle-border: rgba(30, 36, 48, 0.1);
-        --toggle-hover-bg: #dbe3f5;       /* theme toggle hover */
+  --bg:           #f4f6fb;
+  --bg-elev:      #ffffff;
+  --fg:           #1e2430;
+  --muted:        #5e6877;
+  --row-hover:    #eef1f8;
+  --rule:         #d7dde6;
+  --accent:       #2d6cdf;
+  --focus:        0 0 0 3px rgba(45, 108, 223, 0.25);
+  --link:         var(--accent);
+  --clear-link:   var(--muted);
+  --input-border: var(--rule);
+  --focus-border: var(--accent);
+  --table-shadow: 0 18px 38px rgba(15, 30, 55, 0.08);
+  --td-border:    rgba(0, 0, 0, 0.05);
+  --parent-hover: #1b1f2a;
+  --footer-link:  var(--accent);
+  --toggle-bg:         #e8ecf6;
+  --toggle-fg:         #1e2430;
+  --toggle-border:     rgba(30, 36, 48, 0.1);
+  --toggle-hover-bg:   #dbe3f5;
 }
 
 /* =========================
    Theme tokens (Dark)
-   Override variables when .theme-dark is on <body>
-   Values taken from Nginx-Fancyindex-Theme-dark/styles.css
    ========================= */
 body.theme-dark {
-        --bg: #2f343f;
-        --bg-elev: #262a32;
-        --fg: #ffffff;
-        --muted: #9099a3;
-        --row-hover: #3d4351;
-        --rule: #3c404a;
-        --accent: #cfd6df;
-        --focus: 0 0 0 3px rgba(255, 255, 255, 0.25);
-        --link: #ffffff;
-        --clear-link: #cbd3dc;
-        --input-border: #3c404a;
-        --focus-border: #cfd6df;
-        --table-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-        --td-border: rgba(255, 255, 255, 0.07);
-        --parent-hover: #2a2a2a;
-        --footer-link: #ffffff;
-        --toggle-bg: #1f222b;
-        --toggle-fg: #ffffff;
-        --toggle-border: rgba(255, 255, 255, 0.12);
-        --toggle-hover-bg: #2a2f3a;
+  --bg:           #2f343f;
+  --bg-elev:      #262a32;
+  --fg:           #ffffff;
+  --muted:        #9099a3;
+  --row-hover:    #3d4351;
+  --rule:         #3c404a;
+  --accent:       #cfd6df;
+  --focus:        0 0 0 3px rgba(255, 255, 255, 0.25);
+  --link:         #ffffff;
+  --clear-link:   #cbd3dc;
+  --input-border: #3c404a;
+  --focus-border: #cfd6df;
+  --table-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  --td-border:    rgba(255, 255, 255, 0.07);
+  --parent-hover: #2a2a2a;
+  --footer-link:  #ffffff;
+  --toggle-bg:         #1f222b;
+  --toggle-fg:         #ffffff;
+  --toggle-border:     rgba(255, 255, 255, 0.12);
+  --toggle-hover-bg:   #2a2f3a;
 }
 
 /* =========================
-   Global typography + colors
-   prioritize the default user interface font of the operating system for native look and feel
+   Global typography
    https://css-tricks.com/snippets/css/system-font-stack/
    ========================= */
 html {
-        font-family: system-ui, -apple-system, 'Segoe UI', Ubuntu, Cantarell, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
-        color: var(--muted);                                /* default text color (secondary) */
-        font-weight: 300;
-        font-size: clamp(14px, 1.2vw, 16px);                /* fluid base size */
-        line-height: 1.6;                                   /* TO DO: 1.6x font height is "confortable", add toggle for condensed ~1.2*/
-        text-size-adjust: 100%;
-        background-color: var(--bg);
+  font-family: system-ui, -apple-system, 'Segoe UI', Ubuntu, Cantarell,
+               'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: var(--muted);
+  font-weight: 300;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.6;
+  text-size-adjust: 100%;
+  background-color: var(--bg);
 }
 
 body {
-        margin: 0;
-        justify-content: center;                            /* layout centering when used with flex contexts */
-        align-items: flex-start;
-        min-height: 100vh;
-        padding: clamp(12px, 2.5vw, 24px);                  /* responsive page padding */
-        color: var(--fg);                                   /* main text color */
-        background-color: var(--bg);
-        transition: background-color 150ms ease-in, color 150ms ease-in; /* theme fade */
+  margin: 0;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: clamp(12px, 2.5vw, 24px);
+  color: var(--fg);
+  background-color: var(--bg);
+  transition: background-color 150ms ease-in, color 150ms ease-in;
 }
 
 /* =========================
    Headings and table headers
    ========================= */
-thead {
-        font-weight: 200;
-        font-size: 1.2em;
+h1 {
+  font-weight: 300;
+  text-align: center;
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.4rem);
+  line-height: 1.4;
+  margin-bottom: 1.25rem;
 }
 
-h1 {
-        font-weight: 300;
-        text-align: center;
-        font-size: clamp(1.5rem, 2vw + 1rem, 2.4rem);
-        line-height: 1.4;
-        margin-bottom: 1.25rem;
+thead {
+  font-weight: 200;
+  font-size: 1.2em;
 }
 
 /* =========================
-   Directory header: search + theme toggle container
+   Directory controls: search + theme toggle
    ========================= */
 .directory-controls {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.75rem;
-        margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  scroll-behavior: smooth;
 }
 
-/* Arrange controls horizontally on wider screens */
 @media (min-width: 720px) {
-        .directory-controls {
-                flex-direction: row;
-                justify-content: center;
-        }
+  .directory-controls {
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 
 /* =========================
    Links
    ========================= */
 a {
-        color: var(--link);
-        text-decoration: none;
+  color: var(--link);
+  text-decoration: none;
 }
+
 a:hover {
-        text-decoration: underline;
+  text-decoration: underline;
 }
-/* "Clear" link style (e.g., reset search) */
+
+/* Subtle action links (e.g. reset search) */
 a.clear,
 a.clear:link,
 a.clear:visited {
-        color: var(--clear-link);
-        padding: 2px 0;d a[href$=".gz"]::before,
-#list tbody tr td:first-child a[href$=".7z"]::before,
-#list tbody tr td:first-child a[href$=".bz2"]::before,
-#list tbody tr td:first-child a[href$=".xz"]::before {
-        content: '📦';
+  color: var(--clear-link);
+  padding: 2px 0;
+  font-weight: 400;
+  font-size: 1rem;
+  margin-left: 1rem;
+  line-height: 1;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease-in;
 }
-        font-weight: 400;
-        font-size: 1rem;
-        margin-left: 1rem;
-        line-height: 1;
-        display: inline-block;
-        border-bottom: 1px solid transparent;
-        transition: border-color 200ms ease-in;
-}
+
 a.clear:hover {
-        border-bottom-color: currentColor;
+  border-bottom-color: currentColor;
 }
 
 /* =========================
    Theme toggle button
    ========================= */
 .theme-toggle {
-        appearance: none;
-        border-radius: 999px;                               /* pill */
-        border: 1px solid var(--toggle-border);
-        background: var(--toggle-bg);
-        color: var(--toggle-fg);
-        padding: 0.35rem 1.2rem;
-        font: 500 0.9rem/1.2 'Roboto', system-ui, sans-serif;
-        cursor: pointer;
-        transition: background-color 150ms ease-in, transform 150ms ease-in;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;                                       /* icon/text spacing */
+  appearance: none;
+  border-radius: 999px;
+  border: 1px solid var(--toggle-border);
+  background: var(--toggle-bg);
+  color: var(--toggle-fg);
+  padding: 0.35rem 1.2rem;
+  font: 500 0.9rem/1.2 'Roboto', system-ui, sans-serif;
+  cursor: pointer;
+  transition: background-color 150ms ease-in, transform 150ms ease-in;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
 }
 
 .theme-toggle:hover {
-        background: var(--toggle-hover-bg);
+  background: var(--toggle-hover-bg);
 }
 
 .theme-toggle:focus-visible {
-        outline: none;
-        box-shadow: var(--focus);                           /* tokenized focus ring */
+  outline: none;
+  box-shadow: var(--focus);
 }
 
 .theme-toggle[aria-pressed="true"] {
-        font-weight: 600;                                   /* pressed state emphasis */
+  font-weight: 600;
 }
 
 /* =========================
-   Inputs (search)
+   Search input
    ========================= */
 input {
-        display: block;
-        margin: 0 auto;
-        width: clamp(16rem, 60vw, 32rem);                   /* fluid width */
-        height: 2.25rem;
-        padding: 0 0.75rem;
-        color: var(--fg);
-        background-color: var(--bg-elev);
-        border: 1px solid var(--input-border);
-        border-radius: 6px;
-        font: 300 0.95rem/1.2 'Roboto', system-ui, sans-serif;
-        transition: border-color 150ms ease-in, box-shadow 150ms ease-in;
+  display: block;
+  margin: 0 auto;
+  width: clamp(16rem, 60vw, 32rem);
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  color: var(--fg);
+  background-color: var(--bg-elev);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font: 300 0.95rem/1.2 'Roboto', system-ui, sans-serif;
+  transition: border-color 150ms ease-in, box-shadow 150ms ease-in;
 }
+
 input:focus-visible {
-        outline: 0;
-        border-color: var(--focus-border);
-        box-shadow: var(--focus);
+  outline: 0;
+  border-color: var(--focus-border);
+  box-shadow: var(--focus);
 }
 
 #search {
-        color: var(--fg);
-        background-color: var(--bg-elev);
-        display: block;
-        margin-inline: auto;
-        width: min(100%, 320px);
-        margin-top: 0;
-        appearance: textfield;                              /* normalizes iOS search styles */
+  color: var(--fg);
+  background-color: var(--bg-elev);
+  display: block;
+  margin-inline: auto;
+  width: min(100%, 320px);
+  margin-top: 0;
+  appearance: textfield;
 }
 
 /* =========================
-   Table: container + rows/cols
+   Table
    ========================= */
 table {
-        border-collapse: collapse;
-        font-size: 0.95em;
-        width: 100%;
-        margin: 24px 0 0;
-        background: var(--bg-elev);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--table-shadow);
+  border-collapse: collapse;
+  font-size: 0.95em;
+  width: 100%;
+  margin: 24px 0 0;
+  background: var(--bg-elev);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--table-shadow);
 }
 
 tr {
-        outline: 0;
-        border: 0;
+  outline: 0;
+  border: 0;
 }
+
 tr:hover td {
-        color: var(--fg);
-        background: var(--row-hover);
+  color: var(--fg);
+  background: var(--row-hover);
 }
+
 tr td:first-of-type {
-        padding-left: 10px;
-        padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
+
 tr.parent a {
-        color: var(--muted);                                /* subtle parent directory row */
+  color: var(--muted);
 }
 
 th {
-        text-align: left;
-        font-size: 0.75em;
-        padding: 12px 20px;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #7a8597;
-        background: #e3e8f1;
+  text-align: left;
+  font-size: 0.75em;
+  padding: 12px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a8597;
+  background: #e3e8f1;
 }
 
 body.theme-dark th {
-        color: #8a94a6;
-        background: #1f222b;
+  color: #8a94a6;
+  background: #1f222b;
 }
 
 th + th {
-        width: 25%;                                         /* constrain mid columns */
+  width: 25%;
 }
+
 th + th + th + th {
-        width: 5%;                                          /* final column (e.g., size) narrow */
+  width: 5%;
 }
 
 td {
-        padding: 14px 20px;
-        outline: 0;
-        border: 0;
-        border-bottom: 1px solid var(--td-border);          /* row separators */
-        vertical-align: middle;
-        text-align: left;
-        transition: background 300ms ease-in;
+  padding: 14px 20px;
+  outline: 0;
+  border: 0;
+  border-bottom: 1px solid var(--td-border);
+  vertical-align: middle;
+  text-align: left;
+  transition: background 300ms ease-in;
 }
 
 td:last-child,
 th:last-child {
-        text-align: right;                                  /* align trailing numeric data */
-        padding-right: 10px;
+  text-align: right;
+  padding-right: 10px;
 }
 
 td a {
-        display: block;                                     /* make entire cell clickable */
+  display: block;
 }
 
 /* =========================
-   File type "icons" via ::before content
-   Applied to first column links
+   File-type emoji icons via ::before
    https://stackoverflow.com/a/60198998
-   https://www.smashingmagazine.com/2009/08/taming-advanced-css-selectors/#before-and-after
    ========================= */
+
+/* Default: generic file */
 #list tbody tr td:first-child a::before {
-        content: '📄';
-        margin-right: 0.5rem;
-        display: inline-block;
-        font-style: normal;
+  content: '📄';
+  margin-right: 0.5rem;
+  display: inline-block;
+  font-style: normal;
 }
 
-/* Directory/Folder */d a[href$=".gz"]::before,
-#list tbody tr td:first-child a[href$=".7z"]::before,
-#list tbody tr td:first-child a[href$=".bz2"]::before,
-#list tbody tr td:first-child a[href$=".xz"]::before {
-        content: '📦';
-}
+/* Directory */
 #list tbody tr td:first-child a[href$="/"]::before {
-        content: '📁';
+  content: '📁';
 }
 
 /* Parent directory */
 #list tbody tr.parent td:first-child a::before {
-        content: '⬆️';
+  content: '⬆️';
 }
 
 /* Images */
@@ -342,10 +337,10 @@ td a {
 #list tbody tr td:first-child a[href$=".webp"]::before,
 #list tbody tr td:first-child a[href$=".ico"]::before,
 #list tbody tr td:first-child a[href$=".bmp"]::before {
-        content: '🖼️';
+  content: '🖼️';
 }
 
-/* Videos */
+/* Video */
 #list tbody tr td:first-child a[href$=".mp4"]::before,
 #list tbody tr td:first-child a[href$=".avi"]::before,
 #list tbody tr td:first-child a[href$=".mov"]::before,
@@ -353,7 +348,7 @@ td a {
 #list tbody tr td:first-child a[href$=".flv"]::before,
 #list tbody tr td:first-child a[href$=".webm"]::before,
 #list tbody tr td:first-child a[href$=".mkv"]::before {
-        content: '🎬';
+  content: '🎬';
 }
 
 /* Audio */
@@ -363,7 +358,7 @@ td a {
 #list tbody tr td:first-child a[href$=".aac"]::before,
 #list tbody tr td:first-child a[href$=".ogg"]::before,
 #list tbody tr td:first-child a[href$=".m4a"]::before {
-        content: '🎵';
+  content: '🎵';
 }
 
 /* Archives */
@@ -374,42 +369,37 @@ td a {
 #list tbody tr td:first-child a[href$=".7z"]::before,
 #list tbody tr td:first-child a[href$=".bz2"]::before,
 #list tbody tr td:first-child a[href$=".xz"]::before {
-        content: '📦';
+  content: '📦';
 }
 
 /* Documents */
 #list tbody tr td:first-child a[href$=".pdf"]::before {
-        content: '📕';
+  content: '📕';
 }
 
 #list tbody tr td:first-child a[href$=".doc"]::before,
 #list tbody tr td:first-child a[href$=".docx"]::before {
-        content: '📘';
+  content: '📘';
 }
 
 #list tbody tr td:first-child a[href$=".xls"]::before,
 #list tbody tr td:first-child a[href$=".xlsx"]::before,
 #list tbody tr td:first-child a[href$=".csv"]::before {
-        content: '📊';
+  content: '📊';
 }
 
 #list tbody tr td:first-child a[href$=".ppt"]::before,
 #list tbody tr td:first-child a[href$=".pptx"]::before {
-        co
-        background-color: var(--bg-elev);
-        display: block;
-        margin-inline: auto;
-        width: min(100%, 320px);
-   ntent: '📙';
+  content: '📙';
 }
 
 #list tbody tr td:first-child a[href$=".txt"]::before,
 #list tbody tr td:first-child a[href$=".md"]::before,
 #list tbody tr td:first-child a[href$=".markdown"]::before {
-        content: '📝';
+  content: '📝';
 }
 
-/* Code files */
+/* Code */
 #list tbody tr td:first-child a[href$=".html"]::before,
 #list tbody tr td:first-child a[href$=".htm"]::before,
 #list tbody tr td:first-child a[href$=".css"]::before,
@@ -429,7 +419,7 @@ td a {
 #list tbody tr td:first-child a[href$=".ts"]::before,
 #list tbody tr td:first-child a[href$=".tsx"]::before,
 #list tbody tr td:first-child a[href$=".jsx"]::before {
-        content: '💻';
+  content: '💻';
 }
 
 /* Executables */
@@ -437,7 +427,7 @@ td a {
 #list tbody tr td:first-child a[href$=".app"]::before,
 #list tbody tr td:first-child a[href$=".dmg"]::before,
 #list tbody tr td:first-child a[href$=".iso"]::before {
-        content: '⚙️';
+  content: '⚙️';
 }
 
 /* Configuration */
@@ -447,312 +437,270 @@ td a {
 #list tbody tr td:first-child a[href$=".yaml"]::before,
 #list tbody tr td:first-child a[href$=".yml"]::before,
 #list tbody tr td:first-child a[href$=".toml"]::before {
-        content: '🔧';
+  content: '🔧';
 }
 
 /* =========================
    Parent directory hover
    ========================= */
 .parent a:hover {
-        color: var(--parent-hover);
+  color: var(--parent-hover);
 }
 
 /* =========================
    Footer
    ========================= */
 footer {
-        font-size: 12px;
-        text-align: center;
+  font-size: 12px;
+  text-align: center;
 }
 
 footer a {
-        text-decoration: underline;
-        color: var(--footer-link);
+  text-decoration: underline;
+  color: var(--footer-link);
 }
 
 /* =========================
    Breadcrumb navigation
    ========================= */
 .breadcrumb-nav {
-        ma
-        background-color: var(--bg-elev);
-        display: block;
-        margin-inline: auto;
-        width: min(100%, 320px);
-   rgin: 1rem 0 1.5rem;
-        padding: 0.75rem 1rem;
-        background: var(--bg-elev);
-        border-radius: 8px;
-        border: 1px solid var(--rule);
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0.75rem;
+  margin: 1rem 0 1.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-elev);
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
 }
 
 .breadcrumb {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: center;
-        margin: 0;
-        padding: 0;
-        font-size: 0.95rem;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-size: 0.95rem;
 }
 
 .breadcrumb li {
-        display: flex;
-        align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .breadcrumb li:not(:last-child)::after {
-        content: '/';
-        margin-left: 0.5rem;
-        color: var(--muted);
+  content: '/';
+  margin-left: 0.5rem;
+  color: var(--muted);
 }
 
 .breadcrumb a {
-        color: var(--link);
-        text-decoration: none;
-        transition: color 150ms ease;
-}
-
-#list tbody tr td:first-child a[href$=".doc"]::before,
-#list tbody tr td:first-child a[href$=".docx"]::before {
-        content: '📘';
-}
-
-#list tbody tr td:first-child a[href$=".xls"]::before,
-#list tbody tr td:first-child a[href$=".xlsx"]:ase-in;
+  color: var(--link);
+  text-decoration: none;
+  transition: color 150ms ease;
 }
 
 .breadcrumb a:hover {
-        text-decoration: underline;
-        color: var(--accent);
+  text-decoration: underline;
+  color: var(--accent);
 }
 
 .breadcrumb-current {
-        color: var(--fg);
-        font-weight: 500;
+  color: var(--fg);
+  font-weight: 500;
 }
 
 /* =========================
    Copy page URL button
    ========================= */
 .copy-page-url-btn {
-        appearance: none;
-        border: 1px solid var(--rule);
-        background: var(--bg);
-        color: var(--fg);
-        padding: 0.5rem 1rem;
-        margin-left: 1rem;
-        border-radius: 6px;
-        font: 400 0.85rem system-ui, sans-serif;
-        cursor: pointer;
-        transition: all 150ms ease-in;
+  appearance: none;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border-radius: 6px;
+  font: 400 0.85rem system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 150ms ease-in;
 }
 
 .copy-page-url-btn:hover {
-        background: var(--row-hover);
-        border-color: var(--accent);
+  background: var(--row-hover);
+  border-color: var(--accent);
 }
 
 .copy-page-url-btn:focus-visible {
-        outline: none;
-        box-shadow: var(--focus);
+  outline: none;
+  box-shadow: var(--focus);
 }
 
 /* =========================
    Pagination controls
    ========================= */
 .pagination {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        margin: 2rem 0;
-        padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem;
 }
 
 .pagination-info {
-        color: var(--muted);
-        font-size: 0.9rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .pagination-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        align-items: center;
-        justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .pagination-btn {
-        appearance: none;
-        border: 1px solid var(--rule);
-        background: var(--bg-elev);
-        color: var(--fg);
-        padding: 0.5rem 0.75rem;
-        border-radius: 6px;
-        font: 400 0.9rem system-ui, sans-serif;
-        cursor: pointer;
-        transition: all 150ms ease-in;
-        min-width: 2.5rem;
+  appearance: none;
+  border: 1px solid var(--rule);
+  background: var(--bg-elev);
+  color: var(--fg);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font: 400 0.9rem system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 150ms ease-in;
+  min-width: 2.5rem;
 }
 
 .pagination-btn:hover:not(:disabled) {
-        background: var(--row-hover);
-        border-color: var(<!--
-header.html
-© 2015-18, Lilian Besson (Naereen) and contributors,
-open-sourced under the MIT License, https://lbesson.mit-license.org/
-hosted on GitHub, https://GitHub.com/Naereen/Nginx-Fancyindex-Theme
--->--accent);
+  background: var(--row-hover);
+  border-color: var(--accent);
 }
 
 .pagination-btn:focus-visible {
-        outline: none;
-        box-shadow: var(--focus);
+  outline: none;
+  box-shadow: var(--focus);
 }
 
 .pagination-btn:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .pagination-btn.active {
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
-        font-weight: 600;
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  font-weight: 600;
 }
 
 .pagination-ellipsis {
-        color: var(--muted);
-        padding: 0 0.25rem;
+  color: var(--muted);
+  padding: 0 0.25rem;
 }
 
 /* =========================
-   Responsive: mobile layout
-   Converts the table into stacked cards and adjusts controls
+   Responsive: mobile (≤ 720px)
    ========================= */
 @media (max-width: 720px) {
-        body {
-                padding: clamp(16px, 4vw, 32px);
-                box-shadow: none;
-        }
+  body {
+    padding: clamp(16px, 4vw, 32px);
+    box-shadow: none;
+  }
 
-        /* Stack table elements as blocks for small screens */
-        table,
-        thead,
-        tbody,
-        th,
-        td,
-        tr {
-                display: block;
-                width: 100%;
-        }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+    width: 100%;
+  }
 
-        table {
-                background: transparent;
-                box-shadow: none;
-                border-radius: 0;
-                overflow: visible;
-        }
+  table {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+  }
 
-        thead {
-                display: none;                               /* hide header row on mobile */
-        }
+  thead {
+    display: none;
+  }
 
-        tr {
-                margin-bottom: 16px;
-                border: 1px solid var(--td-border);
-                border-radius: 12px;
-                box-shadow: var(--table-shadow);
-                overflow: hidden;
-                background: var(--bg-elev);
-        }
+  tr {
+    margin-bottom: 16px;
+    border: 1px solid var(--td-border);
+    border-radius: 12px;
+    box-shadow: var(--table-shadow);
+    overflow: hidden;
+    background: var(--bg-elev);
+  }
 
-        body.theme-dark tr {
-                box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
-        }
+  body.theme-dark tr {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
+  }
 
-        td {
-                padding: 12px 16px;
-                border-bottom: 1px solid var(--td-border);
-                display: flex;
-                justify-content: space-between;
-                gap: 12px;
-        }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--td-border);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
 
-        td:last-child {
-                border-bottom: none;
-                text-align: left;
-        }
+  td:last-child {
+    border-bottom: none;
+    text-align: left;
+  }
 
-        td::before {
-                content: attr(data-label);                   /* adds pseudo header */
-                font-weight: 600;
-                color: rgba(27, 31, 42, 0.7);
-                text-transform: uppercase;
-                letter-spacing: 0.04em;
-        }
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: rgba(27, 31, 42, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
 
-        body.theme-dark td::before {
-                color: rgba(255, 255, 255, 0.65);
-        }
+  body.theme-dark td::before {
+    color: rgba(255, 255, 255, 0.65);
+  }
 
-        /* Fallback labels if data-label not provided */
-        td:nth-of-type(1):not([data-label])::before {
-                content: 'Name';
-        }
+  /* Fallback labels when data-label is absent */
+  td:nth-of-type(1):not([data-label])::before { content: 'Name'; }
+  td:nth-of-type(2):not([data-label])::before { content: 'Size'; }
+  td:nth-of-type(3):not([data-label])::before { content: 'Last modified'; }
+  td:nth-of-type(4):not([data-label])::before { content: 'Description'; }
 
-        td:nth-of-type(2):not([data-label])::before {
-                content: 'Size';
-        }
+  .breadcrumb {
+    font-size: 0.85rem;
+  }
 
-        td:nth-of-type(3):not([data-label])::before {
-                content: 'Last modified';
-        }
+  .breadcrumb-nav {
+    padding: 0.5rem 0.75rem;
+  }
 
-        td:nth-of-type(4):not([data-label])::before {
-                content: 'Description';
-        }
+  .pagination-btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+    min-width: 2.25rem;
+  }
 
-        /* Mobile breadcrumb styles */
-        .breadcrumb {
-                font-size: 0.85rem;
-        }
+  .pagination-info {
+    font-size: 0.85rem;
+  }
 
-        .breadcrumb-nav {
-                padding: 0.5rem 0.75rem;
-        }
-
-        /* Mobile pagination styles */
-        .pagination-btn {
-                padding: 0.4rem 0.6rem;
-                font-size: 0.85rem;
-                min-width: 2.25rem;
-        }
-
-        .pagination-info {
-                font-size: 0.85rem;
-        }
-
-        /* Mobile copy button styles */
-        .copy-page-url-btn {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.75rem;
-                margin-left: 0;
-#list tbody tr td:first-child a[href$=".doc"]::before,
-#list tbody tr td:first-child a[href$=".docx"]::before {
-        content: '📘';
-}
-
-#list tbody tr td:first-child a[href$=".xls"]::before,
-#list tbody tr td:first-child a[href$=".xlsx"]:
-                margin-top: 0.5rem;
-        }
+  .copy-page-url-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.75rem;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
 }
