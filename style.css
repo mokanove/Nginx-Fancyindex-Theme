@@ -25,52 +25,52 @@
    Theme tokens (Light — default)
    ========================= */
 :root {
-  --bg:           #f4f6fb;
-  --bg-elev:      #ffffff;
-  --fg:           #1e2430;
-  --muted:        #5e6877;
-  --row-hover:    #eef1f8;
-  --rule:         #d7dde6;
-  --accent:       #2d6cdf;
-  --focus:        0 0 0 3px rgba(45, 108, 223, 0.25);
-  --link:         var(--accent);
-  --clear-link:   var(--muted);
+  --bg: #f4f6fb;
+  --bg-elev: #ffffff;
+  --fg: #1e2430;
+  --muted: #5e6877;
+  --row-hover: #eef1f8;
+  --rule: #d7dde6;
+  --accent: #2d6cdf;
+  --focus: 0 0 0 3px rgba(45, 108, 223, 0.25);
+  --link: var(--accent);
+  --clear-link: var(--muted);
   --input-border: var(--rule);
   --focus-border: var(--accent);
   --table-shadow: 0 18px 38px rgba(15, 30, 55, 0.08);
-  --td-border:    rgba(0, 0, 0, 0.05);
+  --td-border: rgba(0, 0, 0, 0.05);
   --parent-hover: #1b1f2a;
-  --footer-link:  var(--accent);
-  --toggle-bg:         #e8ecf6;
-  --toggle-fg:         #1e2430;
-  --toggle-border:     rgba(30, 36, 48, 0.1);
-  --toggle-hover-bg:   #dbe3f5;
+  --footer-link: var(--accent);
+  --toggle-bg: #e8ecf6;
+  --toggle-fg: #1e2430;
+  --toggle-border: rgba(30, 36, 48, 0.1);
+  --toggle-hover-bg: #dbe3f5;
 }
 
 /* =========================
    Theme tokens (Dark)
    ========================= */
 body.theme-dark {
-  --bg:           #2f343f;
-  --bg-elev:      #262a32;
-  --fg:           #ffffff;
-  --muted:        #9099a3;
-  --row-hover:    #3d4351;
-  --rule:         #3c404a;
-  --accent:       #cfd6df;
-  --focus:        0 0 0 3px rgba(255, 255, 255, 0.25);
-  --link:         #ffffff;
-  --clear-link:   #cbd3dc;
+  --bg: #2f343f;
+  --bg-elev: #262a32;
+  --fg: #ffffff;
+  --muted: #9099a3;
+  --row-hover: #3d4351;
+  --rule: #3c404a;
+  --accent: #cfd6df;
+  --focus: 0 0 0 3px rgba(255, 255, 255, 0.25);
+  --link: #ffffff;
+  --clear-link: #cbd3dc;
   --input-border: #3c404a;
   --focus-border: #cfd6df;
   --table-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-  --td-border:    rgba(255, 255, 255, 0.07);
+  --td-border: rgba(255, 255, 255, 0.07);
   --parent-hover: #2a2a2a;
-  --footer-link:  #ffffff;
-  --toggle-bg:         #1f222b;
-  --toggle-fg:         #ffffff;
-  --toggle-border:     rgba(255, 255, 255, 0.12);
-  --toggle-hover-bg:   #2a2f3a;
+  --footer-link: #ffffff;
+  --toggle-bg: #1f222b;
+  --toggle-fg: #ffffff;
+  --toggle-border: rgba(255, 255, 255, 0.12);
+  --toggle-hover-bg: #2a2f3a;
 }
 
 /* =========================
@@ -78,8 +78,16 @@ body.theme-dark {
    https://css-tricks.com/snippets/css/system-font-stack/
    ========================= */
 html {
-  font-family: system-ui, -apple-system, 'Segoe UI', Ubuntu, Cantarell,
-               'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Ubuntu,
+    Cantarell,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
   color: var(--muted);
   font-weight: 300;
   font-size: clamp(14px, 1.2vw, 16px);
@@ -96,7 +104,9 @@ body {
   padding: clamp(12px, 2.5vw, 24px);
   color: var(--fg);
   background-color: var(--bg);
-  transition: background-color 150ms ease-in, color 150ms ease-in;
+  transition:
+    background-color 150ms ease-in,
+    color 150ms ease-in;
 }
 
 /* =========================
@@ -175,9 +185,14 @@ a.clear:hover {
   background: var(--toggle-bg);
   color: var(--toggle-fg);
   padding: 0.35rem 1.2rem;
-  font: 500 0.9rem/1.2 'Roboto', system-ui, sans-serif;
+  font:
+    500 0.9rem/1.2 "Roboto",
+    system-ui,
+    sans-serif;
   cursor: pointer;
-  transition: background-color 150ms ease-in, transform 150ms ease-in;
+  transition:
+    background-color 150ms ease-in,
+    transform 150ms ease-in;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -209,8 +224,13 @@ input {
   background-color: var(--bg-elev);
   border: 1px solid var(--input-border);
   border-radius: 6px;
-  font: 300 0.95rem/1.2 'Roboto', system-ui, sans-serif;
-  transition: border-color 150ms ease-in, box-shadow 150ms ease-in;
+  font:
+    300 0.95rem/1.2 "Roboto",
+    system-ui,
+    sans-serif;
+  transition:
+    border-color 150ms ease-in,
+    box-shadow 150ms ease-in;
 }
 
 input:focus-visible {
@@ -312,7 +332,7 @@ td a {
 
 /* Default: generic file */
 #list tbody tr td:first-child a::before {
-  content: '📄';
+  content: "📄";
   margin-right: 0.5rem;
   display: inline-block;
   font-style: normal;
@@ -320,12 +340,12 @@ td a {
 
 /* Directory */
 #list tbody tr td:first-child a[href$="/"]::before {
-  content: '📁';
+  content: "📁";
 }
 
 /* Parent directory */
 #list tbody tr.parent td:first-child a::before {
-  content: '⬆️';
+  content: "⬆️";
 }
 
 /* Images */
@@ -337,7 +357,7 @@ td a {
 #list tbody tr td:first-child a[href$=".webp"]::before,
 #list tbody tr td:first-child a[href$=".ico"]::before,
 #list tbody tr td:first-child a[href$=".bmp"]::before {
-  content: '🖼️';
+  content: "🖼️";
 }
 
 /* Video */
@@ -348,7 +368,7 @@ td a {
 #list tbody tr td:first-child a[href$=".flv"]::before,
 #list tbody tr td:first-child a[href$=".webm"]::before,
 #list tbody tr td:first-child a[href$=".mkv"]::before {
-  content: '🎬';
+  content: "🎬";
 }
 
 /* Audio */
@@ -358,7 +378,7 @@ td a {
 #list tbody tr td:first-child a[href$=".aac"]::before,
 #list tbody tr td:first-child a[href$=".ogg"]::before,
 #list tbody tr td:first-child a[href$=".m4a"]::before {
-  content: '🎵';
+  content: "🎵";
 }
 
 /* Archives */
@@ -369,34 +389,34 @@ td a {
 #list tbody tr td:first-child a[href$=".7z"]::before,
 #list tbody tr td:first-child a[href$=".bz2"]::before,
 #list tbody tr td:first-child a[href$=".xz"]::before {
-  content: '📦';
+  content: "📦";
 }
 
 /* Documents */
 #list tbody tr td:first-child a[href$=".pdf"]::before {
-  content: '📕';
+  content: "📕";
 }
 
 #list tbody tr td:first-child a[href$=".doc"]::before,
 #list tbody tr td:first-child a[href$=".docx"]::before {
-  content: '📘';
+  content: "📘";
 }
 
 #list tbody tr td:first-child a[href$=".xls"]::before,
 #list tbody tr td:first-child a[href$=".xlsx"]::before,
 #list tbody tr td:first-child a[href$=".csv"]::before {
-  content: '📊';
+  content: "📊";
 }
 
 #list tbody tr td:first-child a[href$=".ppt"]::before,
 #list tbody tr td:first-child a[href$=".pptx"]::before {
-  content: '📙';
+  content: "📙";
 }
 
 #list tbody tr td:first-child a[href$=".txt"]::before,
 #list tbody tr td:first-child a[href$=".md"]::before,
 #list tbody tr td:first-child a[href$=".markdown"]::before {
-  content: '📝';
+  content: "📝";
 }
 
 /* Code */
@@ -419,7 +439,7 @@ td a {
 #list tbody tr td:first-child a[href$=".ts"]::before,
 #list tbody tr td:first-child a[href$=".tsx"]::before,
 #list tbody tr td:first-child a[href$=".jsx"]::before {
-  content: '💻';
+  content: "💻";
 }
 
 /* Executables */
@@ -427,7 +447,7 @@ td a {
 #list tbody tr td:first-child a[href$=".app"]::before,
 #list tbody tr td:first-child a[href$=".dmg"]::before,
 #list tbody tr td:first-child a[href$=".iso"]::before {
-  content: '⚙️';
+  content: "⚙️";
 }
 
 /* Configuration */
@@ -437,7 +457,7 @@ td a {
 #list tbody tr td:first-child a[href$=".yaml"]::before,
 #list tbody tr td:first-child a[href$=".yml"]::before,
 #list tbody tr td:first-child a[href$=".toml"]::before {
-  content: '🔧';
+  content: "🔧";
 }
 
 /* =========================
@@ -493,7 +513,7 @@ footer a {
 }
 
 .breadcrumb li:not(:last-child)::after {
-  content: '/';
+  content: "/";
   margin-left: 0.5rem;
   color: var(--muted);
 }
@@ -525,7 +545,9 @@ footer a {
   padding: 0.5rem 1rem;
   margin-left: 1rem;
   border-radius: 6px;
-  font: 400 0.85rem system-ui, sans-serif;
+  font:
+    400 0.85rem system-ui,
+    sans-serif;
   cursor: pointer;
   transition: all 150ms ease-in;
 }
@@ -572,7 +594,9 @@ footer a {
   color: var(--fg);
   padding: 0.5rem 0.75rem;
   border-radius: 6px;
-  font: 400 0.9rem system-ui, sans-serif;
+  font:
+    400 0.9rem system-ui,
+    sans-serif;
   cursor: pointer;
   transition: all 150ms ease-in;
   min-width: 2.5rem;
@@ -674,10 +698,18 @@ footer a {
   }
 
   /* Fallback labels when data-label is absent */
-  td:nth-of-type(1):not([data-label])::before { content: 'Name'; }
-  td:nth-of-type(2):not([data-label])::before { content: 'Size'; }
-  td:nth-of-type(3):not([data-label])::before { content: 'Last modified'; }
-  td:nth-of-type(4):not([data-label])::before { content: 'Description'; }
+  td:nth-of-type(1):not([data-label])::before {
+    content: "Name";
+  }
+  td:nth-of-type(2):not([data-label])::before {
+    content: "Size";
+  }
+  td:nth-of-type(3):not([data-label])::before {
+    content: "Last modified";
+  }
+  td:nth-of-type(4):not([data-label])::before {
+    content: "Description";
+  }
 
   .breadcrumb {
     font-size: 0.85rem;
