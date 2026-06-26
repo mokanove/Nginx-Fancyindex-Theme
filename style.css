@@ -40,7 +40,6 @@
   --table-shadow: 0 18px 38px rgba(15, 30, 55, 0.08);
   --td-border: rgba(0, 0, 0, 0.05);
   --parent-hover: #1b1f2a;
-  --footer-link: var(--accent);
   --toggle-bg: #e8ecf6;
   --toggle-fg: #1e2430;
   --toggle-border: rgba(30, 36, 48, 0.1);
@@ -66,7 +65,6 @@ body.theme-dark {
   --table-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
   --td-border: rgba(255, 255, 255, 0.07);
   --parent-hover: #2a2a2a;
-  --footer-link: #ffffff;
   --toggle-bg: #1f222b;
   --toggle-fg: #ffffff;
   --toggle-border: rgba(255, 255, 255, 0.12);
@@ -471,13 +469,13 @@ td a {
    Footer
    ========================= */
 footer {
-  font-size: 12px;
+  font-size: 20px;
   text-align: center;
 }
 
 footer a {
   text-decoration: underline;
-  color: var(--footer-link);
+  color: blue;
 }
 
 /* =========================
