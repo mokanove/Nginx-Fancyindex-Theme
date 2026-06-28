@@ -48,14 +48,7 @@
     }
     breadcrumbList.innerHTM;
 
-    // Root
-    const rootLi = document.createElement("li");
-    const rootLink = document.createElement("a");
-    rootLink.href = "/";
-    rootLink.textContent = "Root";
-    rootLi.appendChild(rootLink);
-    breadcrumbList.appendChild(rootLi);
-
+    // Path
     if (pathText && pathText !== "/") {
       const parts = pathText.split("/").filter(Boolean);
       let currentPath = "";
